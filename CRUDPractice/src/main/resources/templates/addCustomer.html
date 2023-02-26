@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" >
+<head th:include="layout.html :: header">
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<th:body th:insert="layout.html::navbar"></th:body>
+<div class="container">
+<form method="post" th:object="${newCustomer}">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Name</label>
+    <input type="text" class="form-control" name="name" th:field="*{name}">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Email</label>
+    <input type="email" class="form-control" name="email" th:field="*{email}">
+  </div>
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>
+</div>
+</body>
+</html>

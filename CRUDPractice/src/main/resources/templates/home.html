@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout.html :: header">
+</head>
+<body>
+<th:body th:insert="layout.html::navbar"></th:body>
+<a href="/addcustomer"><button type="button" class="btn btn-primary">AddCustomer</button></a>
+
+<div class="container">
+<!--<table class="table table-bordered border-primary">-->
+<table class="table">
+  <thead>
+    <tr>
+	<th>Id</th>
+	<th>Name</th>
+	<th>Email</th>
+	<th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<!--I want that, below div tag will be repeted for every ToDo task . So i have to use Enhanced for loop-->
+    <tr th:each="e : ${customers}">
+      <th th:text="${e.id}"></th>
+      <th th:text="${e.name}"></th>
+      <th th:text="${e.email}"></th>
+      <!--Here To send the request data there are two ways  1.Path Varibale 2.QueryString
+		For Update we use PathVariable and for Delete we use QueryString -->
+      <th><a th:href="@{/update/{id}(id=${e.id})}" class="btn btn-primary">Update</a>
+      	<a th:href="@{/delete(id=${e.id})}" class="btn btn-danger">Delete</a>
+      </th>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+</body>
+</html>
